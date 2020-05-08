@@ -31,7 +31,7 @@
     "laravel": {
       "providers": [
         "RonasIT\\Support\\AutoDoc\\AutoDocServiceProvider",
-        "RonasIT\\Support\\DataCollectors\\LocalDataCollectorServiceProvider"
+        "RonasIT\\Support\\AutoDoc\\LocalDataCollectorServiceProvider"
       ]
     }
   }
