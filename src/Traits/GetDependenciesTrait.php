@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Created by PhpStorm.
+ * User: roman
+ * Date: 27.08.16
+ * Time: 13:51
+ */
+
 namespace RonasIT\Support\AutoDoc\Traits;
 
 use ReflectionMethod;
@@ -10,7 +17,7 @@ trait GetDependenciesTrait
 {
     protected function resolveClassMethodDependencies(array $parameters, $instance, $method)
     {
-        if (!method_exists($instance, $method)) {
+        if (! method_exists($instance, $method)) {
             return $parameters;
         }
 
@@ -19,15 +26,13 @@ trait GetDependenciesTrait
         );
     }
 
-    public function getDependencies(ReflectionFunctionAbstract $reflector)
-    {
+    public function getDependencies(ReflectionFunctionAbstract $reflector) {
         return array_map(function ($parameter) {
             return $this->transformDependency($parameter);
         }, $reflector->getParameters());
     }
 
-    protected function transformDependency(ReflectionParameter $parameter)
-    {
+    protected function transformDependency(ReflectionParameter $parameter) {
         $class = $parameter->getClass();
 
         if (empty($class)) {

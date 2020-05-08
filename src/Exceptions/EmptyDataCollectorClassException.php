@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: artem
+ * Date: 25.02.17
+ * Time: 15:00
+ */
 
 namespace RonasIT\Support\AutoDoc\Exceptions;
 
