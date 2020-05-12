@@ -246,6 +246,7 @@ class SwaggerService
 
         $this->saveParameters($concreteRequest, $annotations);
         $this->saveDescription($concreteRequest, $annotations);
+        $this->saveTagsCustom($annotations);
     }
 
     protected function parseResponse($response)
@@ -515,6 +516,15 @@ class SwaggerService
 
         if (!empty($description)) {
             $this->item['description'] = $description;
+        }
+    }
+
+    public function saveTagsCustom(AnnotationsBagInterface $annotations)
+    {
+        $tags = $annotations->get('tags');
+
+        if (!empty($tags)) {
+            $this->item['tags'] = [$tags];
         }
     }
 
