@@ -34,22 +34,12 @@ class AutoDocController extends BaseController
     }
 
     /**
+     * @param string $section
      * @return \Illuminate\Http\JsonResponse
      */
-    public function documentationWeb()
+    public function documentation(string $section = 'web')
     {
-        $this->service->setDataCollectorFilePath(config('local-data-collector.path_web'));
-        $documentation = $this->service->getDocFileContent();
-
-        return response()->json($documentation);
-    }
-
-    /**
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function documentationMobile()
-    {
-        $this->service->setDataCollectorFilePath(config('local-data-collector.path_mobile'));
+        $this->service->setDataCollectorFilePath(config('local-data-collector.path_' . $section));
         $documentation = $this->service->getDocFileContent();
 
         return response()->json($documentation);
@@ -76,12 +66,12 @@ class AutoDocController extends BaseController
         }
 
         $ext = pathinfo($filePath, PATHINFO_EXTENSION);
-        $memeType = $ext == "css" ? "text/css": "application/javascript";
+        $memeType = $ext == "css" ? "text/css" : "application/javascript";
 
         $content = file_get_contents($filePath);
 
         return response($content, 200, [
-            "Content-Type"=> $memeType
+            "Content-Type" => $memeType,
         ]);
     }
 }
