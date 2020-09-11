@@ -3,7 +3,7 @@
 namespace  RonasIT\Support\AutoDoc\DataCollectors;
 
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use RonasIT\Support\Interfaces\DataCollectorInterface;
+use RonasIT\Support\AutoDoc\Interfaces\DataCollectorInterface;
 use RonasIT\Support\AutoDoc\Exceptions\MissedProductionFilePathException;
 
 class LocalDataCollector implements DataCollectorInterface
